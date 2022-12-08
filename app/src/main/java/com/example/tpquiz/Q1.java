@@ -28,10 +28,10 @@ public class Q1 extends AppCompatActivity {
 
     Singleton queue;
     String q1 = "https://api.spotify.com/v1/tracks/6QdnKD1zwEgyOWtkrdzlOF"; // HURT YOU - MY DEAR MELANCHOLY
-    JsonObjectRequest jsonq1;
-    SharedPreferences sharedPreferences;
+    JsonObjectRequest jsonq1, jsonreturned;
     Chronometer chronometer;
     Method method = new Method();
+    JSON json = new JSON();
 
     TextView reponse, question;
     Button b1, b2, b3, b4;
@@ -60,36 +60,16 @@ public class Q1 extends AppCompatActivity {
         b1.setOnClickListener(e -> r = false);
         b2.setOnClickListener(e -> {
             r = true;
-            reponse.setText("OUI, c'est effectivement " + temp + " !");
-//            intent = new Intent(Q1.this, Q2.class);
+            reponse.setText("OUI, c'est effectivement " + json.getTemp() + " !");
             chronometer.start();
-//            isPressed(intent, chronometer);
             method.isPressed(chronometer, this);
         });
         b3.setOnClickListener(e -> r = false);
         b4.setOnClickListener(e -> r = false);
 
-        sharedPreferences = getApplicationContext().getSharedPreferences("SPOTIFY", 0);
         queue = Singleton.getInstance(this);
 
-        jsonq1 = new JsonObjectRequest(Request.Method.GET, q1, null, response -> {
-            try {
-                JSONObject array = response.getJSONObject("album");
-                temp = array.getString("name");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }, null){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                String token = sharedPreferences.getString("token", "");
-                String auth = "Bearer " + token;
-                headers.put("Authorization", auth);
-                headers.put("Content-Type", "application/json; charset=utf-8");
-                return headers;
-            }
-        };
-        queue.addToRequestQueue(jsonq1);
+        jsonreturned = json.jsoning(jsonq1, q1, null, this);
+        queue.addToRequestQueue(jsonreturned);
     }
 }

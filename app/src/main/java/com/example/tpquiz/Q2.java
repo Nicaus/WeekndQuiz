@@ -28,9 +28,10 @@ import java.util.Vector;
 public class Q2 extends AppCompatActivity {
 
     Method method = new Method();
+    JSON json = new JSON();
     Singleton queue;
     String q2 = "https://api.spotify.com/v1/albums/2ODvWsOgouMbaA5xf0RkJe"; // STARBOY
-    JsonObjectRequest jsonq2;
+    JsonObjectRequest jsonq2, jsonreturned;
     SharedPreferences sharedPreferences;
     NetworkImageView niw;
 
@@ -65,37 +66,16 @@ public class Q2 extends AppCompatActivity {
         b3.setOnClickListener(e -> r = false);
         b4.setOnClickListener(e -> {
             r = true;
-            reponse.setText("OUI, c'est effectivement " + temp + " !");
-            Intent intent = new Intent(Q2.this, Q3.class);
+            reponse.setText("OUI, c'est effectivement " + json.getTemp() + " !");
             chronometer.start();
             method.isPressed(chronometer, this);
         });
 
-        sharedPreferences = getApplicationContext().getSharedPreferences("SPOTIFY", 0);
         queue = Singleton.getInstance(this);
 
-        jsonq2 = new JsonObjectRequest(Request.Method.GET, q2, null, response -> {
-            try {
-                temp = response.getString("release_date");
-//                temp = array.getString("name");
-                JSONArray image = response.getJSONArray("images");
-                JSONObject imageo = image.getJSONObject(0);
-                String imageurl = imageo.getString("url");
-                niw.setImageUrl(imageurl, Singleton.getInstance(this.getApplicationContext()).getImageLoader());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }, null){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                String token = sharedPreferences.getString("token", "");
-                String auth = "Bearer " + token;
-                headers.put("Authorization", auth);
-                headers.put("Content-Type", "application/json; charset=utf-8");
-                return headers;
-            }
-        };
-        queue.addToRequestQueue(jsonq2);
+        jsonreturned = json.jsoning(jsonq2, q2, niw, this);
+        temp = json.getTemp();
+
+        queue.addToRequestQueue(jsonreturned);
     }
 }

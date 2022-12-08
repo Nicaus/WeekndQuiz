@@ -30,8 +30,8 @@ public class Q3 extends AppCompatActivity {
     Singleton queue;
     String q3a = "https://api.spotify.com/v1/albums/2nLOHgzXzwFEpl62zAgCEC"; // DAWN FM
     String q3b = "https://api.spotify.com/v1/albums/4yP0hdKOZPNshxUOjY0cZj"; // AFTER HOURS
-    JsonObjectRequest jsonq3a, jsonq3b;
-    SharedPreferences sharedPreferences;
+    JsonObjectRequest jsonq3a, jsonq3b, jsonr1, jsonr2;
+    JSON json = new JSON();
     NetworkImageView niw1, niw2;
     Chronometer chronometer;
     Method method = new Method();
@@ -63,60 +63,18 @@ public class Q3 extends AppCompatActivity {
         b1.setOnClickListener(e -> r = false);
         b2.setOnClickListener(e -> {
             r = true;
-            reponse.setText("OUI, c'est effectivement " + tempb + " !");
+            reponse.setText("OUI, c'est effectivement " + json.getTemp() + " !");
             chronometer.start();
             method.isPressed(chronometer, this);
 
         });
 
-        sharedPreferences = getApplicationContext().getSharedPreferences("SPOTIFY", 0);
         queue = Singleton.getInstance(this);
 
-        jsonq3a = new JsonObjectRequest(Request.Method.GET, q3a, null, response -> {
-            try {
-                tempa = response.getString("popularity");
-                JSONArray image = response.getJSONArray("images");
-                JSONObject imageo = image.getJSONObject(0);
-                String imageurl = imageo.getString("url");
-                niw1.setImageUrl(imageurl, Singleton.getInstance(this.getApplicationContext()).getImageLoader());
-                tempa = response.getString("name");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }, null){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                String token = sharedPreferences.getString("token", "");
-                String auth = "Bearer " + token;
-                headers.put("Authorization", auth);
-                headers.put("Content-Type", "application/json; charset=utf-8");
-                return headers;
-            }
-        };
-        jsonq3b = new JsonObjectRequest(Request.Method.GET, q3b, null, response -> {
-            try {
-                tempb = response.getString("popularity");
-                JSONArray image = response.getJSONArray("images");
-                JSONObject imageo = image.getJSONObject(0);
-                String imageurl = imageo.getString("url");
-                niw2.setImageUrl(imageurl, Singleton.getInstance(this.getApplicationContext()).getImageLoader());
-                tempb = response.getString("name");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }, null){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                String token = sharedPreferences.getString("token", "");
-                String auth = "Bearer " + token;
-                headers.put("Authorization", auth);
-                headers.put("Content-Type", "application/json; charset=utf-8");
-                return headers;
-            }
-        };
-        queue.addToRequestQueue(jsonq3a);
-        queue.addToRequestQueue(jsonq3b);
+        jsonr1 = json.jsoning(jsonq3a, q3a, niw1, this);
+        jsonr2 = json.jsoning(jsonq3b, q3b, niw2, this);
+
+        queue.addToRequestQueue(jsonr1);
+        queue.addToRequestQueue(jsonr2);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.tpquiz;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.util.LruCache;
 
@@ -13,11 +14,13 @@ public class Singleton {
     private static Singleton instance;
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
+    private SharedPreferences sharedPreferences;
     private static Context ctx;
 
     private Singleton(Context context) {
         ctx = context;
         requestQueue = getRequestQueue();
+        sharedPreferences = ctx.getSharedPreferences("SPOTIFY", 0);
 
         imageLoader = new ImageLoader(requestQueue,
                 new ImageLoader.ImageCache() {
@@ -58,6 +61,10 @@ public class Singleton {
 
     public ImageLoader getImageLoader() {
         return imageLoader;
+    }
+
+    public SharedPreferences getSharedPreferences() {
+        return sharedPreferences;
     }
 }
 
