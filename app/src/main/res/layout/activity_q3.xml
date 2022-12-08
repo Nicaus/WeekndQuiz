@@ -11,7 +11,9 @@
         android:id="@+id/q3question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/simplement"
         android:text="TextView"
+        android:textAlignment="center"
         android:textSize="24sp" />
 
     <LinearLayout
@@ -36,23 +38,27 @@
         android:id="@+id/q3reponse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/simplement"
         android:textSize="24sp" />
 
     <Button
         android:id="@+id/r1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/simplement"
         android:text="Button" />
 
     <Button
         android:id="@+id/r2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/simplement"
         android:text="Button" />
 
     <Chronometer
         android:id="@+id/chrono3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:textAlignment="center" />
 
 </LinearLayout>

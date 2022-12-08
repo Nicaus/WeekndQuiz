@@ -11,8 +11,11 @@
         android:id="@+id/q2question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/simplement"
         android:text="TextView"
-        android:textSize="24sp" />
+        android:textAlignment="center"
+        android:textSize="24sp"
+        tools:ignore="HardcodedText" />
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/q2image"
@@ -23,34 +26,45 @@
         android:id="@+id/q2reponse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/simplement"
+        android:textAlignment="center"
         android:textSize="24sp" />
 
     <Button
         android:id="@+id/q2b1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:fontFamily="@font/simplement"
+        android:text="Button"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/q2b2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:fontFamily="@font/simplement"
+        android:text="Button"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/q2b3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:fontFamily="@font/simplement"
+        android:text="Button"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/q2b4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:fontFamily="@font/simplement"
+        android:text="Button"
+        tools:ignore="HardcodedText" />
 
     <Chronometer
         android:id="@+id/chrono2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textAlignment="center" />
 </LinearLayout>
