@@ -58,7 +58,7 @@ public class IdentActivity extends AppCompatActivity {
     }
 
     private void startMainActivity() {
-        Intent newintent = new Intent(IdentActivity.this, Q1.class);
+        Intent newintent = new Intent(IdentActivity.this, MainActivity.class);
         startActivity(newintent);
     }
 	

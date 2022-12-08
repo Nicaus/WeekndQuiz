@@ -60,7 +60,7 @@ public class Q1 extends AppCompatActivity {
         b1.setOnClickListener(e -> r = false);
         b2.setOnClickListener(e -> {
             r = true;
-            reponse.setText("OUI, c'est effectivement " + json.getTemp() + " !");
+            reponse.setText("c'est effectivement " + json.getTemp() + " !");
             chronometer.start();
             method.isPressed(chronometer, this);
         });
