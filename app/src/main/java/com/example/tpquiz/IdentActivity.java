@@ -31,9 +31,6 @@ public class IdentActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //  getSupportActionBar().hide();
         setContentView(R.layout.activity_ident);
-
-
-
         authenticateSpotify();
 
         msharedPreferences = this.getSharedPreferences("SPOTIFY", 0);
