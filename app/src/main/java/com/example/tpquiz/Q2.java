@@ -31,7 +31,7 @@ public class Q2 extends AppCompatActivity {
     JSON json = new JSON();
     Singleton queue;
     String q2 = "https://api.spotify.com/v1/albums/2ODvWsOgouMbaA5xf0RkJe"; // STARBOY
-    JsonObjectRequest jsonq2, jsonreturned;
+    JsonObjectRequest jq2, jsonreturned;
     SharedPreferences sharedPreferences;
     NetworkImageView niw;
 
@@ -73,7 +73,7 @@ public class Q2 extends AppCompatActivity {
 
         queue = Singleton.getInstance(this);
 
-        jsonreturned = json.jsoning(jsonq2, q2, niw, this);
+        jsonreturned = json.jsoning(jq2, q2, niw, this);
         temp = json.getTemp();
 
         queue.addToRequestQueue(jsonreturned);

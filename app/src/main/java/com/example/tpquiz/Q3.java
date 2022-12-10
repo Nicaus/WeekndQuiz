@@ -30,7 +30,7 @@ public class Q3 extends AppCompatActivity {
     Singleton queue;
     String q3a = "https://api.spotify.com/v1/albums/2nLOHgzXzwFEpl62zAgCEC"; // DAWN FM
     String q3b = "https://api.spotify.com/v1/albums/4yP0hdKOZPNshxUOjY0cZj"; // AFTER HOURS
-    JsonObjectRequest jsonq3a, jsonq3b, jsonr1, jsonr2;
+    JsonObjectRequest jq3, jsonr1, jsonr2;
     JSON json = new JSON();
     NetworkImageView niw1, niw2;
     Chronometer chronometer;
@@ -66,13 +66,12 @@ public class Q3 extends AppCompatActivity {
             reponse.setText("OUI, c'est effectivement " + json.getTemp() + " !");
             chronometer.start();
             method.isPressed(chronometer, this);
-
         });
 
         queue = Singleton.getInstance(this);
 
-        jsonr1 = json.jsoning(jsonq3a, q3a, niw1, this);
-        jsonr2 = json.jsoning(jsonq3b, q3b, niw2, this);
+        jsonr1 = json.jsoning(jq3, q3a, niw1, this);
+        jsonr2 = json.jsoning(jq3, q3b, niw2, this);
 
         queue.addToRequestQueue(jsonr1);
         queue.addToRequestQueue(jsonr2);
