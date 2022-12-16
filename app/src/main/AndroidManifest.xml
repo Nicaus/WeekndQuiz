@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tpquiz">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Score"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".Q3" />
         <activity android:name=".Q2" />
         <activity android:name=".Q1" />
