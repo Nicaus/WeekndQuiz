@@ -47,7 +47,7 @@ public class Method {
     }
 
     @SuppressLint("SetTextI18n")
-    public void onClick(Button b) {
+    public void onClick(Button b, TextView reponse, Chronometer chronometer, Context ctx, JSON json) {
         b.setOnClickListener(e -> {
             reponse.setText("c'est effectivement " + json.getTemp() + " !");
             chronometer.start();

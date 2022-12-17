@@ -23,6 +23,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Random;
 import java.util.Vector;
 
 public class Q2 extends AppCompatActivity {
@@ -30,8 +31,14 @@ public class Q2 extends AppCompatActivity {
     Method method = new Method();
     JSON json = new JSON();
     Singleton queue;
-    String q2 = "https://api.spotify.com/v1/albums/2ODvWsOgouMbaA5xf0RkJe"; // STARBOY
-    JsonObjectRequest jq2, jsonreturned;
+    String qt = "https://api.spotify.com/v1/albums/5EbpxRwbbpCJUepbqVTZ1U"; // Trilogy
+    String qk = "https://api.spotify.com/v1/albums/3hhDpPtCFuQbppwYgsVhMO"; // Kissland
+    String qb = "https://api.spotify.com/v1/albums/0P3oVJBFOv3TDXlYRhGL7s"; // Beauty Behind the Madness
+    String qs = "https://api.spotify.com/v1/albums/2ODvWsOgouMbaA5xf0RkJe"; // STARBOY
+    String qm = "https://api.spotify.com/v1/albums/4qZBW3f2Q8y0k1A84d4iAO"; // My Dear Melancholy,
+    String qa = "https://api.spotify.com/v1/albums/4yP0hdKOZPNshxUOjY0cZj"; // After Hours
+    String qd = "https://api.spotify.com/v1/albums/2nLOHgzXzwFEpl62zAgCEC"; // Dawn FM
+    JsonObjectRequest jq2, jsonreturned, jt, jk, jb, js, jm, ja, jd;
     SharedPreferences sharedPreferences;
     NetworkImageView niw;
 
@@ -55,27 +62,75 @@ public class Q2 extends AppCompatActivity {
         b4 = findViewById(R.id.q2b4);
         chronometer = findViewById(R.id.chrono2);
 
-        question.setText("L'album 'Starboy' est sortie en quel année?");
-        b1.setText("2015");
-        b2.setText("2017");
-        b3.setText("2014");
-        b4.setText("2016");
+        String s = "L'album ";
+        String[] q2s = {"Trilogy", "Kissland", "Beauty Behind the Madness", "Starboy", "My Dear Melancholy,", "After Hours", "Dawn FM"};
+        String qstruct = " est sortie en quel année?";
+        int rand = new Random().nextInt(q2s.length);
 
-        b1.setOnClickListener(e -> r = false);
-        b2.setOnClickListener(e -> r = false);
-        b3.setOnClickListener(e -> r = false);
-        b4.setOnClickListener(e -> {
-            r = true;
-            reponse.setText("OUI, c'est effectivement " + json.getTemp() + " !");
-            chronometer.start();
-            method.isPressed(chronometer, this);
-        });
+        question.setText(s + q2s[rand] + qstruct);
+        b1.setText("20XX");
+        b2.setText("20XX");
+        b3.setText("20XX");
+        b4.setText("20XX");
 
         queue = Singleton.getInstance(this);
 
-        jsonreturned = json.jsoning(jq2, q2, niw, this);
-        temp = json.getTemp();
-
-        queue.addToRequestQueue(jsonreturned);
+        if (rand == 0) {
+            b1.setText("2010");
+            b2.setText("2018");
+            b3.setText("2015");
+            b4.setText("2011");
+            jt = json.jsoning(jq2, qt, niw, this);
+            queue.addToRequestQueue(jt);
+            method.onClick(b4, reponse, chronometer, this, json);
+        } else if (rand == 1) {
+            b1.setText("2022");
+            b2.setText("2012");
+            b3.setText("2013");
+            b4.setText("2018");
+            jk = json.jsoning(jq2, qk, niw, this);
+            queue.addToRequestQueue(jk);
+            method.onClick(b2, reponse, chronometer, this, json);
+        } else if (rand == 2) {
+            b1.setText("2013");
+            b2.setText("2022");
+            b3.setText("2014");
+            b4.setText("2016");
+            jb = json.jsoning(jq2, qb, niw, this);
+            queue.addToRequestQueue(jb);
+            method.onClick(b1, reponse, chronometer, this, json);
+        } else if (rand == 3) {
+            b1.setText("20XX");
+            b2.setText("20XX");
+            b3.setText("2015");
+            b4.setText("20XX");
+            js = json.jsoning(jq2, qs, niw, this);
+            queue.addToRequestQueue(js);
+            method.onClick(b3, reponse, chronometer, this, json);
+        } else if (rand == 4) {
+            b1.setText("20XX");
+            b2.setText("20XX");
+            b3.setText("20XX");
+            b4.setText("2018");
+            jm = json.jsoning(jq2, qm, niw, this);
+            queue.addToRequestQueue(jm);
+            method.onClick(b4, reponse, chronometer, this, json);
+        } else if (rand == 5) {
+            b1.setText("20XX");
+            b2.setText("2020");
+            b3.setText("20XX");
+            b4.setText("20XX");
+            ja = json.jsoning(jq2, qa, niw, this);
+            queue.addToRequestQueue(ja);
+            method.onClick(b2, reponse, chronometer, this, json);
+        } else if (rand == 6) {
+            b1.setText("20XX");
+            b2.setText("20XX");
+            b3.setText("2022");
+            b4.setText("20XX");
+            jd = json.jsoning(jq2, qd, niw, this);
+            queue.addToRequestQueue(jd);
+            method.onClick(b3, reponse, chronometer, this, json);
+        }
     }
 }
