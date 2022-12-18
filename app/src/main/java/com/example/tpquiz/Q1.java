@@ -40,7 +40,6 @@ public class Q1 extends AppCompatActivity {
     JSON json = new JSON();
     TextView reponse, question;
     Button b1, b2, b3, b4;
-//    Method method = new Method(reponse, json, chronometer, this);
 
     @SuppressLint("SetTextI18n")
     @Override

@@ -38,15 +38,13 @@ public class Q2 extends AppCompatActivity {
     String qm = "https://api.spotify.com/v1/albums/4qZBW3f2Q8y0k1A84d4iAO"; // My Dear Melancholy,
     String qa = "https://api.spotify.com/v1/albums/4yP0hdKOZPNshxUOjY0cZj"; // After Hours
     String qd = "https://api.spotify.com/v1/albums/2nLOHgzXzwFEpl62zAgCEC"; // Dawn FM
-    JsonObjectRequest jq2, jsonreturned, jt, jk, jb, js, jm, ja, jd;
-    SharedPreferences sharedPreferences;
+    JsonObjectRequest jq2, jt, jk, jb, js, jm, ja, jd;
+
     NetworkImageView niw;
 
     Chronometer chronometer;
     TextView reponse, question;
     Button b1, b2, b3, b4;
-    String temp;
-    boolean r = false;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -79,7 +77,7 @@ public class Q2 extends AppCompatActivity {
             b1.setText("2010");
             b2.setText("2018");
             b3.setText("2015");
-            b4.setText("2011");
+            b4.setText("2012");
             jt = json.jsoning(jq2, qt, niw, this);
             queue.addToRequestQueue(jt);
             method.onClick(b4, reponse, chronometer, this, json);
@@ -90,9 +88,9 @@ public class Q2 extends AppCompatActivity {
             b4.setText("2018");
             jk = json.jsoning(jq2, qk, niw, this);
             queue.addToRequestQueue(jk);
-            method.onClick(b2, reponse, chronometer, this, json);
+            method.onClick(b3, reponse, chronometer, this, json);
         } else if (rand == 2) {
-            b1.setText("2013");
+            b1.setText("2015");
             b2.setText("2022");
             b3.setText("2014");
             b4.setText("2016");
@@ -100,34 +98,34 @@ public class Q2 extends AppCompatActivity {
             queue.addToRequestQueue(jb);
             method.onClick(b1, reponse, chronometer, this, json);
         } else if (rand == 3) {
-            b1.setText("20XX");
-            b2.setText("20XX");
-            b3.setText("2015");
-            b4.setText("20XX");
+            b1.setText("2009");
+            b2.setText("2021");
+            b3.setText("2016");
+            b4.setText("2013");
             js = json.jsoning(jq2, qs, niw, this);
             queue.addToRequestQueue(js);
             method.onClick(b3, reponse, chronometer, this, json);
         } else if (rand == 4) {
-            b1.setText("20XX");
-            b2.setText("20XX");
-            b3.setText("20XX");
+            b1.setText("2012");
+            b2.setText("2017");
+            b3.setText("2019");
             b4.setText("2018");
             jm = json.jsoning(jq2, qm, niw, this);
             queue.addToRequestQueue(jm);
             method.onClick(b4, reponse, chronometer, this, json);
         } else if (rand == 5) {
-            b1.setText("20XX");
+            b1.setText("2021");
             b2.setText("2020");
-            b3.setText("20XX");
-            b4.setText("20XX");
+            b3.setText("2018");
+            b4.setText("2019");
             ja = json.jsoning(jq2, qa, niw, this);
             queue.addToRequestQueue(ja);
             method.onClick(b2, reponse, chronometer, this, json);
         } else if (rand == 6) {
-            b1.setText("20XX");
-            b2.setText("20XX");
+            b1.setText("2021");
+            b2.setText("2023");
             b3.setText("2022");
-            b4.setText("20XX");
+            b4.setText("2020");
             jd = json.jsoning(jq2, qd, niw, this);
             queue.addToRequestQueue(jd);
             method.onClick(b3, reponse, chronometer, this, json);

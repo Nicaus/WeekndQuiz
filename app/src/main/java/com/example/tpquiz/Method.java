@@ -32,8 +32,6 @@ public class Method {
             intent = new Intent(ctx, Q3.class);
         } else if (ctx instanceof Q3) {
             intent = new Intent(ctx, Score.class);
-        } else if (ctx instanceof Score){
-            intent = new Intent(ctx, MainActivity.class);
         }
         chronometer.setOnChronometerTickListener(f -> {
             count++;
