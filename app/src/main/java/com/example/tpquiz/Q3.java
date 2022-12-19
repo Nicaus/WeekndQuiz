@@ -3,28 +3,15 @@ package com.example.tpquiz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
 import java.util.Random;
-import java.util.Vector;
 
 public class Q3 extends AppCompatActivity {
 
@@ -45,9 +32,6 @@ public class Q3 extends AppCompatActivity {
 
     TextView reponse, question;
     Button b1, b2;
-
-    String tempa, tempb;
-    boolean r = false;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -80,6 +64,7 @@ public class Q3 extends AppCompatActivity {
             queue.addToRequestQueue(j11);
             queue.addToRequestQueue(j12);
             method.onClick(b2, reponse, chronometer, this, json);
+            method.wrong(this, b1);
             reponse.setText("c'est effectivement " + json.getTemp() + " !");
         } else if (rand == 1) {
             b1.setText("Beauty Behind the Madness");
@@ -89,6 +74,7 @@ public class Q3 extends AppCompatActivity {
             queue.addToRequestQueue(j21);
             queue.addToRequestQueue(j22);
             method.onClick(b2, reponse, chronometer, this, json);
+            method.wrong(this, b1);
             reponse.setText("c'est effectivement " + json.getTemp() + " !");
         } else if (rand == 2) {
             b1.setText("Starboy");
@@ -98,24 +84,27 @@ public class Q3 extends AppCompatActivity {
             queue.addToRequestQueue(j31);
             queue.addToRequestQueue(j32);
             method.onClick(b2, reponse, chronometer, this, json);
+            method.wrong(this, b1);
             reponse.setText("c'est effectivement " + json.getTemp() + " !");
         } else if (rand == 3) {
             b1.setText("My Dear Melancholy,");
             b2.setText("Beauty Behind the Madness");
             j42 = json.jsoning(jq3, qb, niw2, this);
             j41 = json.jsoning(jq3, qm, niw1, this);
-            queue.addToRequestQueue(j41);
             queue.addToRequestQueue(j42);
+            queue.addToRequestQueue(j41);
             method.onClick(b1, reponse, chronometer, this, json);
+            method.wrong(this, b2);
             reponse.setText("c'est effectivement " + json.getTemp() + " !");
         } else if (rand == 4) {
             b1.setText("After Hours");
             b2.setText("Dawn FM");
             j52 = json.jsoning(jq3, qd, niw2, this);
             j51 = json.jsoning(jq3, qa, niw1, this);
-            queue.addToRequestQueue(j51);
             queue.addToRequestQueue(j52);
+            queue.addToRequestQueue(j51);
             method.onClick(b1, reponse, chronometer, this, json);
+            method.wrong(this, b1);
             reponse.setText("c'est effectivement " + json.getTemp() + " !");
         }
 

@@ -2,34 +2,14 @@ package com.example.tpquiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
 import java.util.Random;
-import java.util.Vector;
-import java.util.concurrent.TimeUnit;
 
 public class Q1 extends AppCompatActivity {
 
@@ -78,6 +58,7 @@ public class Q1 extends AppCompatActivity {
             jhurt = json.jsoning(jq1, shurt, null, this);
             queue.addToRequestQueue(jhurt);
             onClick(b2);
+            method.wrong(this, b1, b3, b4);
         } else if (rand == 1) {
             b1.setText("Starboy");
             b2.setText("Kissland");
@@ -85,6 +66,7 @@ public class Q1 extends AppCompatActivity {
             jpmonster = json.jsoning(jq1, spmonster, null, this);
             queue.addToRequestQueue(jpmonster);
             onClick(b1);
+            method.wrong(this, b2, b3, b4);
         } else if (rand == 2) {
             b1.setText("After Hours");
             b2.setText("Kissland");
@@ -92,12 +74,14 @@ public class Q1 extends AppCompatActivity {
             jwander = json.jsoning(jq1, swander, null, this);
             queue.addToRequestQueue(jwander);
             onClick(b2);
+            method.wrong(this, b1, b3, b4);
         } else if (rand == 3) {
             b1.setText("Paradise Again");
             b2.setText("Positions");
             jmoth = json.jsoning(jq1, smoth, null, this);
             queue.addToRequestQueue(jmoth);
             onClick(b1);
+            method.wrong(this, b2, b3, b4);
         } else if (rand == 4) {
             b1.setText("House of Balloons");
             b2.setText("Aucun album, c'est un single");
@@ -105,6 +89,7 @@ public class Q1 extends AppCompatActivity {
             jmtl = json.jsoning(jq1, smtl, null, this);
             queue.addToRequestQueue(jmtl);
             onClick(b4);
+            method.wrong(this, b1, b2, b3);
         }
     }
 

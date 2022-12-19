@@ -1,7 +1,6 @@
 package com.example.tpquiz;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;

@@ -3,28 +3,14 @@ package com.example.tpquiz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
 import java.util.Random;
-import java.util.Vector;
 
 public class Q2 extends AppCompatActivity {
 
@@ -83,6 +69,7 @@ public class Q2 extends AppCompatActivity {
             jt = json.jsoning(jq2, qt, niw, this);
             queue.addToRequestQueue(jt);
             method.onClick(b4, reponse, chronometer, this, json);
+            method.wrong(this, b1, b3, b2);
             reponse.setText("c'est effectivement en " + json.getTemp() + " !");
         } else if (rand == 1) {
             b1.setText("2022");
@@ -92,6 +79,7 @@ public class Q2 extends AppCompatActivity {
             jk = json.jsoning(jq2, qk, niw, this);
             queue.addToRequestQueue(jk);
             method.onClick(b3, reponse, chronometer, this, json);
+            method.wrong(this, b1, b2, b4);
             reponse.setText("c'est effectivement en " + json.getTemp() + " !");
         } else if (rand == 2) {
             b1.setText("2015");
@@ -101,6 +89,7 @@ public class Q2 extends AppCompatActivity {
             jb = json.jsoning(jq2, qb, niw, this);
             queue.addToRequestQueue(jb);
             method.onClick(b1, reponse, chronometer, this, json);
+            method.wrong(this, b2, b3, b4);
             reponse.setText("c'est effectivement en " + json.getTemp() + " !");
         } else if (rand == 3) {
             b1.setText("2009");
@@ -110,6 +99,7 @@ public class Q2 extends AppCompatActivity {
             js = json.jsoning(jq2, qs, niw, this);
             queue.addToRequestQueue(js);
             method.onClick(b3, reponse, chronometer, this, json);
+            method.wrong(this, b1, b2, b4);
             reponse.setText("c'est effectivement en " + json.getTemp() + " !");
         } else if (rand == 4) {
             b1.setText("2012");
@@ -119,6 +109,7 @@ public class Q2 extends AppCompatActivity {
             jm = json.jsoning(jq2, qm, niw, this);
             queue.addToRequestQueue(jm);
             method.onClick(b4, reponse, chronometer, this, json);
+            method.wrong(this, b1, b3, b2);
             reponse.setText("c'est effectivement en " + json.getTemp() + " !");
         } else if (rand == 5) {
             b1.setText("2021");
@@ -128,6 +119,7 @@ public class Q2 extends AppCompatActivity {
             ja = json.jsoning(jq2, qa, niw, this);
             queue.addToRequestQueue(ja);
             method.onClick(b2, reponse, chronometer, this, json);
+            method.wrong(this, b1, b3, b4);
             reponse.setText("c'est effectivement en " + json.getTemp() + " !");
         } else if (rand == 6) {
             b1.setText("2021");
@@ -137,6 +129,7 @@ public class Q2 extends AppCompatActivity {
             jd = json.jsoning(jq2, qd, niw, this);
             queue.addToRequestQueue(jd);
             method.onClick(b3, reponse, chronometer, this, json);
+            method.wrong(this, b1, b2, b4);
             reponse.setText("c'est effectivement en " + json.getTemp() + " !");
         }
 

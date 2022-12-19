@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.android.volley.toolbox.NetworkImageView;
 
 public class Method {
@@ -60,4 +60,28 @@ public class Method {
         as.start();
         ao.start();
     }
+
+    public void wrong(Context ctx, Button b1, Button b2, Button b3){
+
+        b1.setOnClickListener(e->{
+            Toast.makeText(ctx, "Faux", Toast.LENGTH_SHORT).show();
+
+        });
+        b2.setOnClickListener(e->{
+            Toast.makeText(ctx, "Faux", Toast.LENGTH_SHORT).show();
+
+        });
+        b3.setOnClickListener(e->{
+            Toast.makeText(ctx, "Faux", Toast.LENGTH_SHORT).show();
+
+        });
+    }
+
+    public void wrong(Context ctx, Button b){
+        b.setOnClickListener(e->{
+            Toast.makeText(ctx, "Faux", Toast.LENGTH_SHORT).show();
+
+        });
+    }
+
 }
