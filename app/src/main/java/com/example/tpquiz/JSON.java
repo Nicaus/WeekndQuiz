@@ -7,6 +7,8 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,12 +19,17 @@ import java.util.Map;
 
 class JSON {
     private String temp;
+    private String imageurl;
 
     public JsonObjectRequest jsoning(JsonObjectRequest json, String url, NetworkImageView niw, Context ctx) {
         json = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
             try {
                 if (ctx instanceof Q1){
                     JSONObject array = response.getJSONObject("album");
+                    JSONArray image = array.getJSONArray("images");
+                    JSONObject imageo = image.getJSONObject(0);
+                    String imageurl = imageo.getString("url");
+                    setImageurl(imageurl);
                     temp = array.getString("name");
                 } else if (ctx instanceof Q2){
                     temp = response.getString("release_date");
@@ -60,5 +67,13 @@ class JSON {
 
     public void setTemp(String temp) {
         this.temp = temp;
+    }
+
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
     }
 }

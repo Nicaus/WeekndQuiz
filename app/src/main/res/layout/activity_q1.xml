@@ -20,29 +20,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/q1image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintTop_toBottomOf="@+id/q1text"
+        tools:layout_editor_absoluteX="0dp" />
+
     <TextView
         android:id="@+id/q1reponse"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/simplement"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/q1text" />
+        app:layout_constraintTop_toBottomOf="@+id/q1image" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="107dp"
+        android:layout_marginTop="34dp"
         android:fontFamily="@font/simplement"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/q1text" />
+        app:layout_constraintTop_toBottomOf="@+id/q1reponse" />
 
     <Button
         android:id="@+id/button2"

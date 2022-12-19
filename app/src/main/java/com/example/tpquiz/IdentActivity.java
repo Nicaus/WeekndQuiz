@@ -1,11 +1,16 @@
 package com.example.tpquiz;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -28,6 +33,7 @@ public class IdentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //  getSupportActionBar().hide();
         setContentView(R.layout.activity_ident);
@@ -35,6 +41,11 @@ public class IdentActivity extends AppCompatActivity {
 
         msharedPreferences = this.getSharedPreferences("SPOTIFY", 0);
         queue = Volley.newRequestQueue(this);
+        TextView textView = findViewById(R.id.loading);
+
+        ObjectAnimator oa = ObjectAnimator.ofFloat(textView, View.ROTATION, 360);
+        oa.setDuration(500);
+        oa.start();
     }
 
     private void authenticateSpotify() {
@@ -44,6 +55,7 @@ public class IdentActivity extends AppCompatActivity {
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
     }
 	
+    @SuppressLint("ApplySharedPref")
     private void waitForUserInfo() {
         UserService userService = new UserService(queue, msharedPreferences);
         userService.get(() -> {

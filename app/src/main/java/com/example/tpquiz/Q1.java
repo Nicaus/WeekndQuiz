@@ -2,11 +2,14 @@ package com.example.tpquiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
@@ -14,6 +17,9 @@ import android.widget.TextView;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.NetworkImageView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +41,7 @@ public class Q1 extends AppCompatActivity {
     String smtl = "https://api.spotify.com/v1/tracks/0UGdO687azruy9tFlCxO6F"; // Montreal - Echoes of Silence
 
     JsonObjectRequest jq1, jhurt, jpmonster, jwander, jmoth, jmtl;
+    NetworkImageView niw;
     Chronometer chronometer;
     Method method = new Method();
     JSON json = new JSON();
@@ -48,6 +55,7 @@ public class Q1 extends AppCompatActivity {
         setContentView(R.layout.activity_q1);
         reponse = findViewById(R.id.q1reponse);
         question = findViewById(R.id.q1text);
+        niw = findViewById(R.id.q1image);
         b1 = findViewById(R.id.button);
         b2 = findViewById(R.id.button2);
         b3 = findViewById(R.id.button3);
@@ -104,6 +112,8 @@ public class Q1 extends AppCompatActivity {
     public void onClick(Button b) {
         b.setOnClickListener(e -> {
             reponse.setText("c'est effectivement " + json.getTemp() + " !");
+            niw.setImageUrl(json.getImageurl(), Singleton.getInstance(this).getImageLoader());
+            method.animation(niw);
             chronometer.start();
             method.isPressed(chronometer, this);
         });

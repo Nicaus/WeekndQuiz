@@ -26,13 +26,17 @@
             android:id="@+id/image1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleX="2"
+            android:scaleY="2" />
 
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/image2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleX="2"
+            android:scaleY="2" />
     </LinearLayout>
 
     <TextView
@@ -40,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/simplement"
+        android:textAlignment="center"
         android:textSize="24sp" />
 
     <Button

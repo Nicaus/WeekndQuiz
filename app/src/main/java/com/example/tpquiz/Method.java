@@ -1,29 +1,23 @@
 package com.example.tpquiz;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.NetworkImageView;
+
 public class Method {
     Intent intent;
     int count = 0;
-    TextView reponse;
-    JSON json;
-    Chronometer chronometer;
-    Context ctx;
 
     public Method(){}
-
-    public Method(TextView reponse, JSON json, Chronometer chronometer, Context ctx){
-        this.reponse = reponse;
-        this.json = json;
-        this.chronometer = chronometer;
-        this.ctx = ctx;
-    }
 
     public void isPressed(Chronometer chronometer, Context ctx) {
         if (ctx instanceof Q1) {
@@ -51,5 +45,19 @@ public class Method {
             chronometer.start();
             isPressed(chronometer, ctx);
         });
+    }
+
+    public void animation(NetworkImageView niw){
+        AnimatorSet as = new AnimatorSet();
+        ObjectAnimator ao = ObjectAnimator.ofFloat(niw, View.ROTATION, 360);
+        ObjectAnimator a2 = ObjectAnimator.ofFloat(niw, View.SCALE_X, 1);
+        ObjectAnimator a3 = ObjectAnimator.ofFloat(niw, View.SCALE_Y, 1);
+        as.playTogether(a2, a3);
+        as.setDuration(500);
+        ao.setDuration(500);
+        a2.reverse();
+        a3.reverse();
+        as.start();
+        ao.start();
     }
 }
